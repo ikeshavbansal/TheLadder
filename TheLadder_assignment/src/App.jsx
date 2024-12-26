@@ -1,9 +1,12 @@
-import "./App.css";
+import Header from "./Components/Header.jsx";
+import { Outlet} from "react-router"
 
 function App() {
+    
     return (
         <>
-            <p>Hello!</p>
+            <Header/>
+            <Outlet/>
         </>
     );
 }
