@@ -3,15 +3,16 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { BrowserRouter,Routes,Route } from 'react-router'
-import SectionA from './Pages/sectionA.jsx'
+import PortfolioSection from './Pages/sectionA.jsx'
+import Cube from './Pages/sectionB.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route index element={<SectionA/>}/>
-        <Route path='sectionB' element={<SectionA/>}/>
+        <Route index element={<PortfolioSection/>}/>
+        <Route path='sectionB' element={<Cube/>}/>
       </Route>
     </Routes>
   </BrowserRouter>
