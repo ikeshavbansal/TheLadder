@@ -65,7 +65,7 @@ const SectionA = () => {
 
     return (
         <div
-            className="h-[400vh] overflow-hidden"
+            className="h-[500vh] overflow-hidden"
             style={{
                 fontFamily:
                     "var(--framer-blockquote-font-family, var(--framer-font-family, Inter, Inter Placeholder, sans-serif))",
@@ -73,15 +73,15 @@ const SectionA = () => {
         >
             <BgImageA sections={sections} adjustedScrollY={adjustedScrollY} />
 
-            <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div className="md:fixed md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
                 <motion.h1
-                    className="mb-[-50px] -translate-x-1/2 text-[50px] md:text-[100px] text-[rgb(255,96,22)] font-[200px] z-10 text-center"
+                    className="md:mb-[-50px] sm:mt-0 mt-14 md:-translate-x-1/2 text-[50px] md:text-[100px] text-[rgb(255,96,22)] font-[200px] z-10 text-center"
                     style={{ scale: headerScale }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                 >
                     My Expertise
                 </motion.h1>
-                <div className="relative perspective-1000">
+                <div className="relative perspective-1000 md:block hidden">
                     <motion.div
                         className="relative w-[600px] h-[300px]"
                         style={{
@@ -90,12 +90,33 @@ const SectionA = () => {
                             transition: "transform 1s ease-out",
                         }}
                     >
-                        <CubeA sections={sections}/>
+                        <CubeA sections={sections} />
                     </motion.div>
                 </div>
+                <div className="md:hidden block">
+                    {sections.map((section, index) => (
+                        <div
+                            key={index}
+                            className="relative mb-8 p-6 "
+                            style={{
+                                backgroundColor: section.bgColor,
+                            }}
+                        >
+                            <h2 className="text-3xl font-light mb-4 text-white">
+                                {section.title}
+                            </h2>
+                            <p className="text-lg text-white/80 leading-relaxed">
+                                {section.description}
+                            </p>
+                        </div>
+                    ))}
+                </div>
             </div>
-            <div className="fixed right-1/4 top-1/2 -translate-y-1/2 flex flex-col space-y-2">
-                <Tracker sections={sections} adjustedScrollY={adjustedScrollY}/>
+            <div className="fixed right-1/4 top-1/2 -translate-y-1/2 flex flex-col space-y-2 md:block hidden">
+                <Tracker
+                    sections={sections}
+                    adjustedScrollY={adjustedScrollY}
+                />
             </div>
         </div>
     );
