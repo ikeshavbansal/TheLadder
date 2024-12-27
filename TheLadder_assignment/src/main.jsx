@@ -5,6 +5,7 @@ import App from './App.jsx'
 import { BrowserRouter,Routes,Route } from 'react-router'
 import PortfolioSection from './Pages/sectionA.jsx'
 import Cube from './Pages/sectionB.jsx'
+import FoldingBoxes from './Pages/sectionB.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -12,7 +13,7 @@ createRoot(document.getElementById('root')).render(
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<PortfolioSection/>}/>
-        <Route path='sectionB' element={<Cube/>}/>
+        <Route path='sectionB' element={<FoldingBoxes/>}/>
       </Route>
     </Routes>
   </BrowserRouter>
