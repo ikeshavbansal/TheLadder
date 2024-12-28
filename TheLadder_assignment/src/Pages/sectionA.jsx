@@ -14,7 +14,7 @@ const SectionA = () => {
     const [sectionsData, setSectionsData] = useState([]);
 
     useEffect(() => {
-        fetch(`${REACT_APP_BASE_URL}/api/sections?type=sectiona`)
+        fetch(`${import.meta.env.REACT_APP_BASE_URL}/api/sections?type=sectiona`)
             .then(res => res.json())
             .then(data => setSectionsData(data))
             .catch(err => console.error('Error fetching sections:', err));
