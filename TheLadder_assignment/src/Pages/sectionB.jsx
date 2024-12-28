@@ -28,7 +28,7 @@ const FoldingBoxes = () => {
     const [boxes, setBoxes] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/sections?type=sectionb')
+        fetch(`${process.env.REACT_APP_BASE_URL}/api/sections?type=sectionb`)
             .then(res => res.json())
             .then(data => setBoxes(data))
             .catch(err => console.error('Error fetching sections:', err));

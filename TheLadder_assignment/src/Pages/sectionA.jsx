@@ -13,7 +13,7 @@ const SectionA = () => {
     const [sectionsData, setSectionsData] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/sections?type=sectiona')
+        fetch(`${process.env.REACT_APP_BASE_URL}/api/sections?type=sectiona`)
             .then(res => res.json())
             .then(data => setSectionsData(data))
             .catch(err => console.error('Error fetching sections:', err));
