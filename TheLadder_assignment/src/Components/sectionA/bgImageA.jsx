@@ -1,4 +1,8 @@
 import { motion, useTransform } from "framer-motion";
+import photo1 from "../../assets/pic11.avif";
+import photo4 from "../../assets/pic22.avif";
+import photo5 from "../../assets/pic33.avif";
+import photo6 from "../../assets/pic44.avif";
 
 const BgImageA = ({ sections, adjustedScrollY }) => {
     return (
@@ -23,7 +27,15 @@ const BgImageA = ({ sections, adjustedScrollY }) => {
                                 section.finalScale,
                             ]
                         ),
-                        backgroundImage: `url(${section.bgImage})`,
+                        backgroundImage: `url(${
+                        section.bgImage === "photo4"
+                            ? photo4
+                            : section.bgImage === "photo5"
+                            ? photo5
+                            : section.bgImage === "photo6"
+                            ? photo6
+                            : photo1
+                        })`,
                         backgroundSize: "cover",
                         backgroundPosition: "center",
                         transition: "all 1s ease-out",

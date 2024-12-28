@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import ContentB from "../Components/sectionB/contentB";
 import {
@@ -25,6 +25,16 @@ const platformsData = [
 const FoldingBoxes = () => {
     const { scrollY } = useScroll();
 
+    const [boxes, setBoxes] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/api/sections?type=sectionb')
+            .then(res => res.json())
+            .then(data => setBoxes(data))
+            .catch(err => console.error('Error fetching sections:', err));
+    }, []);
+
+
     const box1RotateX = useTransform(scrollY, [0, 300], [0, -10]);
     const box1TranslateY = useTransform(scrollY, [0, 300], [0, -150]);
     const box1Scale = useTransform(scrollY, [0, 300], [1, 0.8]);
@@ -45,7 +55,8 @@ const FoldingBoxes = () => {
     const box3Color = useTransform(scrollY, [600, 900], ["#ffffff", "#999999"]);
 
     return (
-        <div className="min-h-screen">
+      <>
+        {boxes.length> 0 ? <div className="min-h-screen">
             <div className="sticky top-0 left-0 w-full h-screen pt-40">
                 <div
                     className="relative mx-10"
@@ -58,30 +69,20 @@ const FoldingBoxes = () => {
                         zIndex={3}
                         boxScale={box1Scale}
                     >
-                        <ContentB title={"CREATION"} number={1}>
-                            <p className="text-xl">Vous avez une idée ?</p>
-                            <p className="text-xl mb-4">
-                                Nous avons la méthode.
-                            </p>
-                            <p className="text-black/30">
-                                Il existe mille et une façons de faire un
-                                podcast. Nous vous aidons à trouver la vôtre.
-                                Grâce à l’expertise éditoriale et technique de
-                                notre équipe, nous vous aidons à choisir le
-                                meilleur format sonore pour votre projet : celui
-                                qui répondra à vos objectifs, à vos envies, et
-                                qui fera briller votre message.
-                            </p>
-                            <p className="text-black/30">
-                                Construction éditoriale, durée, style de
-                                narration, choix des voix, habillage, besoins
-                                techniques : ensemble, nous donnons forme à
-                                votre projet.
-                            </p>
+                        <ContentB title={boxes[0].title} number={1}>
+                            {boxes[0].sub1 && <p className="text-xl">{boxes[0].sub1}</p>}
+                            {boxes[0].sub2 && <p className="text-xl mb-4">
+                                {boxes[0].sub2}
+                            </p>}
+                            {boxes[0].desc1 && <p className="text-black/30">
+                                {boxes[0].desc1}
+                            </p>}
+                            {boxes[0].desc2 && <p className="text-black/30">
+                                {boxes[0].desc2}
+                            </p>}
                         </ContentB>
                     </ContentBox>
 
-                    {/* Box 2: Production */}
                     <ContentBox
                         boxTranslateY={box2TranslateY}
                         boxRotateX={box2RotateX}
@@ -90,25 +91,19 @@ const FoldingBoxes = () => {
                         boxScale={box2Scale}
                     >
                         <ContentB title={"PRODUCTION"} number={2}>
-                            <p className="text-xl">
-                                Pour chaque projet, c’est une équipe de
-                                professionnels passionnés, sélectionnés et
-                                dédiés qui intervient à chaque étape et selon
-                                vos besoins :
-                            </p>
-
-                            <p className="text-black/30">
-                                La préproduction → rédaction du script, casting
-                                des voix, choix de l’identité sonore.
-                                L’enregistrement → en studio à Toulouse, sur
-                                site, ou délocalisé en studio mobile. La
-                                postproduction → montage, sound design, mixage,
-                                mastering.
-                            </p>
+                            {boxes[1].sub1 && <p className="text-xl">{boxes[1].sub1}</p>}
+                            {boxes[1].sub2 && <p className="text-xl mb-4">
+                                {boxes[1].sub2}
+                            </p>}
+                            {boxes[1].desc1 && <p className="text-black/30">
+                                {boxes[1].desc1}
+                            </p>}
+                            {boxes[1].desc2 && <p className="text-black/30">
+                                {boxes[1].desc2}
+                            </p>}
                         </ContentB>
                     </ContentBox>
 
-                    {/* Box 3: Diffusion */}
                     <ContentBox
                         boxTranslateY={box3TranslateY}
                         boxRotateX={box3RotateX}
@@ -121,25 +116,25 @@ const FoldingBoxes = () => {
                             number={3}
                             platformsData={platformsData}
                         >
-                            <p className="text-xl">
-                                Avoir un podcast, c’est bien. Le faire entendre,
-                                c’est mieux.
-                            </p>
-                            <p className="text-black/30">
-                                Hébergement des contenus,, mise en ligne sur les
-                                différentes plateformes d’écoute, mise à
-                                disposition d’un player audio intégrable, texte
-                                et vignette de présentation, optimisation de
-                                l’audience et suivi des statistiques d’écoute,
-                                on s’occupe de tout (enfin, si vous le voulez !)
-                            </p>
+                            {boxes[2].sub1 && <p className="text-xl">{boxes[2].sub1}</p>}
+                            {boxes[2].sub2 && <p className="text-xl mb-4">
+                                {boxes[2].sub2}
+                            </p>}
+                            {boxes[2].desc1 && <p className="text-black/30">
+                                {boxes[2].desc1}
+                            </p>}
+                            {boxes[2].desc2 && <p className="text-black/30">
+                                {boxes[2].desc2}
+                            </p>}
                         </ContentB>
                     </ContentBox>
                 </div>
             </div>
 
             <div className="h-[200vh]" />
-        </div>
+        </div> : 
+        <div>Loading....</div>}
+        </>
     );
 };
 
