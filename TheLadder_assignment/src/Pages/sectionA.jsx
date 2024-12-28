@@ -14,7 +14,7 @@ const SectionA = () => {
     const [sectionsData, setSectionsData] = useState([]);
 
     useEffect(() => {
-        fetch(`${import.meta.env.VITE_BASE_URL}/api/sections?type=sectiona`)
+        fetch(`https://the-ladder-opal.vercel.app/api/sections?type=sectiona`)
             .then(res => res.json())
             .then(data => setSectionsData(data))
             .catch(err => console.error('Error fetching sections:', err));
