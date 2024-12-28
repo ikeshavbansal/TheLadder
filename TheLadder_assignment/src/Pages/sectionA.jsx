@@ -6,6 +6,7 @@ import CubeA from "../Components/sectionA/cubeA";
 import Tracker from "../Components/sectionA/tracker";
 
 
+
 const SectionA = () => {
     const { scrollY } = useScroll();
     const adjustedScrollY = useTransform(scrollY, (y) => y / 2);
@@ -13,7 +14,7 @@ const SectionA = () => {
     const [sectionsData, setSectionsData] = useState([]);
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_BASE_URL}/api/sections?type=sectiona`)
+        fetch(`${REACT_APP_BASE_URL}/api/sections?type=sectiona`)
             .then(res => res.json())
             .then(data => setSectionsData(data))
             .catch(err => console.error('Error fetching sections:', err));
