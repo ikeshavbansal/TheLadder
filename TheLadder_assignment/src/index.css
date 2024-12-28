@@ -5,3 +5,18 @@
 .preserve-1000 {
     perspective: 1000px;
 }
+
+.cardC{
+--border-bottom-width: 1px;
+    --border-color: var(--token-0e9cfdc9-3194-462b-828b-aa88a53bbc9d, rgba(255, 255, 255, 0.15));
+    --border-left-width: 1px;
+    --border-right-width: 1px;
+    --border-style: solid;
+    --border-top-width: 1px;
+    backdrop-filter: blur(50px);
+    background: linear-gradient(120deg, var(--token-99825b92-ec6e-43af-b81e-f15ae92016b8, rgba(255, 255, 255, 0.1)) 0%, var(--token-4f0c1b0c-2353-4a07-8c75-461a32bf5b86, rgba(255, 255, 255, 0.03)) 100%);
+    border-radius: 32px;
+    box-shadow: 0px 64px 32px -24px var(--token-cf7c625b-901f-4240-8788-7bbf2e08b844, rgba(0, 0, 0, 0.15));
+    opacity: 1;
+    
+}

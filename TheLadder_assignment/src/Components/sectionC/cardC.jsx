@@ -11,17 +11,13 @@ const CardC=({zIndex,cardY,cardRotateZ,cardImg,delay,top})=>
 
   return(<>
     <motion.div
-      className="absolute w-full rounded-xl"
+      className="absolute w-full rounded-xl cardC"
       style={{
         y: cardY,
         zIndex: zIndex,
         rotateZ: cardRotateZ ? cardRotateZ  : "",
         top: top,
         transformPerspective: 1000,
-        backgroundImage:
-          "linear-gradient(145deg, rgba(60,60,60,0.4) 0%, rgba(20,20,20,0.6) 100%)",
-        backdropFilter: "blur(10px)",
-        border: "1px solid rgba(255,255,255,0.1)",
       }}
       transition={
         transition
